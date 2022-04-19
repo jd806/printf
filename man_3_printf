@@ -1,0 +1,41 @@
+.Dd April 19, 2022
+.Dt _PRINTF
+.Os
+.Sh NAME
+.Nm _printf ,
+.Nm int _printf(const char *format, ...) 
+.Nd print formatted text
+.Sh SYNOPSIS
+.In #include "main.h"
+
+.Ft int
+.Fo _printf
+.Fa "const char *format"
+.Fa "..."
+.Fc
+.Sh DESCRIPTION
+The
+.Nm
+function is designed to take in a string of characters with text and character specifiers. 
+.Bl
+.Pp
+The
+.Nm
+method provides the following functionality:
+.Bl 
+.\" ========
+.It %s
+Prints a string of characters. 
+.It %d
+Prints an integer. 
+.It %o
+Prints a decimal number in octodecimo form
+.It %x
+Prints a decimal number in hexadecimal lowercase.
+.It %X
+Prints a decimal number in hexadecimal uppercase. 
+.El
+.Sh RETURNS
+The
+.Nm
+functions return number of printed bytes.
