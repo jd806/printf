@@ -5,4 +5,7 @@ int _putchar(char c);
 int _puts(char *c);
 int _printf(const char *format, ...);
 char *_convert(unsigned int num, int base);
+
+/** String helpers */
+char *_string_reverse(char *string);
 #endif /* __MAIN_H */

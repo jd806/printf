@@ -46,6 +46,27 @@ int _printf(const char *format, ...)
             integer_value = va_arg(ap, int);
             count += _puts(_convert(integer_value, 2));
             break;
+        case 'u':
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 10));
+            break;
+        case 'o':
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 8));
+            break;
+        case 'x':
+            // TODO - Convert to lowercase
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 16));
+            break;
+        case 'X':
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 16));
+            break;
+        case 'r':
+            string_value = va_arg(ap, char *);
+            count += _puts(_string_reverse(string_value));
+            break;
         default:
             count += _putchar(*p);
         }
