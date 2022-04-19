@@ -44,6 +44,16 @@ int _printf(const char *format, ...)
             integer_value = va_arg(ap, int);
             count += _puts(_convert(integer_value, 2));
             break;
+        case 'd':
+            integer_value = va_arg(ap, int);
+            if (integer_value < 0)
+            {
+                integer_value = -integer_value;
+                putchar('-');
+            }
+            _puts(convert(integer_value, 10));
+            break;
+
         case 'u':
             integer_value = va_arg(ap, int);
             count += _puts(_convert(integer_value, 10));
