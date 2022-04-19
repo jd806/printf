@@ -48,6 +48,6 @@ count += _putchar(*p);
 }
 
 va_end(ap);
-// +2 to cover closing characters \0
-return count + 2;
+
+return count;
 }
