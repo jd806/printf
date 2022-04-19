@@ -29,16 +29,16 @@ return count;
 void _string_reverse(char *string)
 {
 
-char temp;
+// char temp;
 int i, j, n;
 n = _string_length(string);
 
 // swapping string[i] and string[j] until i<j
 for (i = 0, j = n - 1; i < j; ++i, --j)
 {
-temp = string[j];
-string[j] = string[i];
-string[i] = temp;
+// temp = string[j];
+// string[j] = string[i];
+// string[i] = temp;
+_putchar(string[j]);
 }
-
 }

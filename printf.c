@@ -64,13 +64,16 @@ integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 8, 1));
 break;
 case 'x':
-// TODO - Convert to lowercase
 integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 16, 1));
 break;
 case 'X':
 integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 16, 0));
+break;
+case 'r':
+string_value = va_arg(ap, char *);
+_string_reverse(string_value);
 break;
 default:
 count += _putchar(*p);
