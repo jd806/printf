@@ -1,17 +1,19 @@
-char *_convert(unsigned int num, int base)
+char *_convert(unsigned int num, int base, int lowercase)
 {
-    static char Representation[] = "0123456789ABCDEF";
-    static char buffer[50];
-    char *ptr;
+static char* Representation;
+static char buffer[50];
+char *ptr;
 
-    ptr = &buffer[49];
-    *ptr = '\0';
+Representation = lowercase ? "0123456789abcdef" : "0123456789ABCDEF";
 
-    do
-    {
-        *--ptr = Representation[num % base];
-        num /= base;
-    } while (num != 0);
+ptr = &buffer[49];
+*ptr = '\0';
 
-    return (ptr);
+do
+{
+*--ptr = Representation[num % base];
+num /= base;
+} while (num != 0);
+
+return (ptr);
 }
