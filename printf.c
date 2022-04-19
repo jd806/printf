@@ -10,44 +10,48 @@
  */
 int _printf(const char *format, ...)
 {
-const char *p;
-char *string_value;
-int integer_value;
-unsigned int count = 0;
+    const char *p;
+    char *string_value;
+    int integer_value;
+    unsigned int count = 0;
 
-// Pick up _printf arguments
-va_list ap;
-va_start(ap, format);
+    // Pick up _printf arguments
+    va_list ap;
+    va_start(ap, format);
 
-// Process Characters
-for (p = format; *p != '\0'; p++)
-{
+    // Process Characters
+    for (p = format; *p != '\0'; p++)
+    {
 
-if (*p != '%')
-{
-count += _putchar(*p);
-continue;
-}
+        if (*p != '%')
+        {
+            count += _putchar(*p);
+            continue;
+        }
 
-switch (*++p)
-{
-case 'c':
-integer_value = va_arg(ap, int);
-count += _putchar(integer_value);
-break;
-case 's':
-for (string_value = va_arg(ap, char *); *string_value; string_value++)
-    count += _putchar(*string_value);
-break;
-case '%':
-count += _putchar('%');
-break;
-default:
-count += _putchar(*p);
-}
-}
+        switch (*++p)
+        {
+        case 'c':
+            integer_value = va_arg(ap, int);
+            count += _putchar(integer_value);
+            break;
+        case 's':
+            string_value = va_arg(ap, char *);
+            count += _puts(string_value);
+            break;
+        case '%':
+            count += _putchar('%');
+            break;
+        case 'b':
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 2));
+            break;
+        default:
+            count += _putchar(*p);
+        }
+    }
 
-va_end(ap);
+    va_end(ap);
 
-return count;
+    return count;
 }
