@@ -50,6 +50,15 @@ case 'u':
 integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 10, 0));
 break;
+case 'd':
+integer_value = va_arg(ap, int);
+if (integer_value < 0)
+{
+    integer_value = -integer_value;
+    count += _putchar('-');
+}
+count += _puts(_convert(integer_value, 10, 0));
+break;
 case 'o':
 integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 8, 1));
@@ -63,11 +72,6 @@ case 'X':
 integer_value = va_arg(ap, int);
 count += _puts(_convert(integer_value, 16, 0));
 break;
-// case 'r':
-//     string_value = va_arg(ap, char *);
-//     _string_reverse(string_value);
-//     count += _puts(string_value);
-//     break;
 default:
 count += _putchar(*p);
 }
