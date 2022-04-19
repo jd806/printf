@@ -15,9 +15,11 @@ int _printf(const char *format, ...)
     int integer_value;
     unsigned int count = 0;
 
+    // Pick up _printf arguments
     va_list ap;
     va_start(ap, format);
 
+    // Process Characters
     for (p = format; *p != '\0'; p++)
     {
 
@@ -34,11 +36,15 @@ int _printf(const char *format, ...)
             count += _putchar(integer_value);
             break;
         case 's':
-            for (string_value = va_arg(ap, char *); *string_value; string_value++)
-                count += _putchar(*string_value);
+            string_value = va_arg(ap, char *);
+            count += _puts(string_value);
             break;
         case '%':
             count += _putchar('%');
+            break;
+        case 'b':
+            integer_value = va_arg(ap, int);
+            count += _puts(_convert(integer_value, 2));
             break;
         default:
             count += _putchar(*p);
@@ -46,5 +52,6 @@ int _printf(const char *format, ...)
     }
 
     va_end(ap);
-    return count + 2;
+
+    return count;
 }
